@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Binary Warz</string>
+
+    <string name="otherPlayer2">P2: 8 cards</string>
+    <string name="otherPlayer3">P3: 5 cards</string>
+    <string name="otherPlayer4">P4: 6 cards</string>
+
+    <string name="addTo">Add To:</string>
+
+    <string name="action_settings">Settings</string>
+</resources>

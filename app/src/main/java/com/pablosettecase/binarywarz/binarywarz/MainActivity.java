@@ -37,7 +37,7 @@ public class MainActivity extends ActionBarActivity {
         super.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //keeps app in portrait mode
 
         countdown();
-
+        //ads
         //initializing variables
         randomGenerator = new Random();
         cardsLeftInDeck = (TextView) findViewById(R.id.Deck);

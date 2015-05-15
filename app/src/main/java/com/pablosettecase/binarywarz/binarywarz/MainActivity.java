@@ -40,19 +40,19 @@ public class MainActivity extends ActionBarActivity {
         //ads
         //initializing variables
         randomGenerator = new Random();
-        cardsLeftInDeck = (TextView) findViewById(R.id.Deck);
+        cardsLeftInDeck = (TextView) findViewById(R.id.deckBack);
         imageCard = new ImageButton[8];
-        imageCard[0] = (ImageButton) findViewById(R.id.imageButton1);
-        imageCard[1] = (ImageButton) findViewById(R.id.imageButton2);
-        imageCard[2] = (ImageButton) findViewById(R.id.imageButton3);
-        imageCard[3] = (ImageButton) findViewById(R.id.imageButton4);
-        imageCard[4] = (ImageButton) findViewById(R.id.imageButton5);
-        imageCard[5] = (ImageButton) findViewById(R.id.imageButton6);
-        imageCard[6] = (ImageButton) findViewById(R.id.imageButton7);
-        imageCard[7] = (ImageButton) findViewById(R.id.imageButton8);
+        imageCard[0] = (ImageButton) findViewById(R.id.card0);
+        imageCard[1] = (ImageButton) findViewById(R.id.card1);
+        imageCard[2] = (ImageButton) findViewById(R.id.card2);
+        imageCard[3] = (ImageButton) findViewById(R.id.card3);
+        imageCard[4] = (ImageButton) findViewById(R.id.card4);
+        imageCard[5] = (ImageButton) findViewById(R.id.card5);
+        imageCard[6] = (ImageButton) findViewById(R.id.card6);
+        imageCard[7] = (ImageButton) findViewById(R.id.card7);
         btnSubmit = (Button) findViewById(R.id.button9);
-        mainCardImage = (ImageButton) findViewById(R.id.imageButtonMainCard);
-        addUpTo = (TextView) findViewById(R.id.AddNumber);
+        mainCardImage = (ImageButton) findViewById(R.id.playCard);
+        addUpTo = (TextView) findViewById(R.id.amount);
         deck = new Deck();
         mainCard = deck.drawCard();
         //end initializing
@@ -210,7 +210,7 @@ public class MainActivity extends ActionBarActivity {
                         if (hand[i].getSelected()) {
                             hand[i].setSelected(false);
                             imageCard[i].setEnabled(false);
-                            imageCard[i].setBackgroundResource(R.drawable.zzback_of_card);
+                            imageCard[i].setBackgroundResource(R.drawable.deck_back);
                         }
                     }
                     cardsLeftInDeck.setText(deck.getCardsRemaining()+"");

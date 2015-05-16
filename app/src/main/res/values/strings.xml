@@ -6,6 +6,7 @@
     <string name="otherPlayer4">P4: 6 cards</string>
 
     <string name="addTo">Add To:</string>
+    <string name="submit">play card</string>
 
     <string name="action_settings">Settings</string>
 </resources>

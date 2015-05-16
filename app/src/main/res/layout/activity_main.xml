@@ -49,6 +49,15 @@
             android:layout_weight="1"
             android:textColor="#fff"
             android:gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/timer"
+            android:layout_weight="1"
+            android:textColor="#fff7ff45"
+            android:gravity="center_horizontal" />
     </LinearLayout>
 
     <LinearLayout
@@ -56,31 +65,41 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:padding="0dp"
-        android:layout_weight="0.5">
+        android:layout_weight="0.4">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardsLeft"
+            android:layout_weight="0.1"
+            android:textColor="#fff" />
 
         <ImageView
-            android:layout_width="165dp"
-            android:layout_height="300dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:id="@+id/deckBack"
-            android:src="@drawable/deck_back"
+            android:background="@drawable/deck_back"
             android:paddingLeft="5dp"
-            android:paddingRight="5dp" />
+            android:paddingRight="5dp"
+            android:layout_weight="0.9" />
 
-        <ImageView
-            android:layout_width="165dp"
-            android:layout_height="300dp"
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:id="@+id/playCard"
-            android:src="@drawable/play_card"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp" />
+            android:layout_weight="0.9"
+            android:scaleType="fitCenter"
+            android:cropToPadding="false"
+            android:longClickable="true"
+            android:background="@drawable/philosoraptor_1000" />
 
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="0.12">
+        android:layout_weight="0.1">
 
         <TextView
             android:layout_width="150dp"
@@ -125,38 +144,42 @@
         android:paddingBottom="0dp"
         android:layout_weight="0.15">
 
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:text=""
             android:id="@+id/card0"
             android:layout_row="0"
             android:layout_column="0"
-            android:background="@drawable/card1" />
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:background="@drawable/card1"
+            android:layout_weight="1" />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:text=""
             android:id="@+id/card1"
             android:layout_row="0"
             android:layout_column="1"
-            android:background="@drawable/card1" />
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:background="@drawable/card1"
+            android:layout_weight="1" />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:text=""
             android:id="@+id/card2"
             android:layout_row="0"
             android:layout_column="2"
-            android:background="@drawable/card1" />
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:background="@drawable/card1"
+            android:layout_weight="1" />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:text=""
             android:id="@+id/card3"
             android:layout_row="0"
             android:layout_column="3"
-            android:background="@drawable/card1" />
+            android:background="@drawable/card1"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -168,40 +191,55 @@
         android:layout_weight="0.15">
 
 
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:text=""
             android:id="@+id/card4"
             android:layout_row="1"
             android:layout_column="0"
-            android:background="@drawable/card1" />
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:background="@drawable/card1"
+            android:layout_weight="1" />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:text=""
             android:id="@+id/card5"
             android:layout_row="1"
             android:layout_column="1"
-            android:background="@drawable/card1" />
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:background="@drawable/card1"
+            android:layout_weight="1" />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:text=""
             android:id="@+id/card6"
             android:layout_row="1"
             android:layout_column="2"
-            android:background="@drawable/card1" />
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:background="@drawable/card1"
+            android:layout_weight="1" />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:text=""
             android:id="@+id/card7"
             android:layout_row="1"
             android:layout_column="3"
-            android:background="@drawable/card1" />
+            android:background="@drawable/card1"
+            android:layout_weight="1" />
 
     </LinearLayout>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:text="@string/submit"
+        android:id="@+id/button9"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight=".1"
+        android:background="#ffff4a4f"
+        android:textColor="#fff"
+        android:layout_marginTop="5dp" />
     <!--</GridLayout>-->
 
 </LinearLayout>

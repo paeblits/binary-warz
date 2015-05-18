@@ -29,6 +29,8 @@ public class MainActivity extends ActionBarActivity {
     ImageButton[] imageCard; //Array of ImageButtons that shows the images of the hand
     Random randomGenerator; //used to generate countdown numbers
     TextView timer; //displays time remaining
+    CountDownTimer cdTimer; // count down timer
+    int timerNum; //number to countdown from
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,6 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         super.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //keeps app in portrait mode
 
-        countdown();
         //initializing variables
         randomGenerator = new Random();
         cardsLeftInDeck = (TextView) findViewById(R.id.cardsLeft);
@@ -54,11 +55,13 @@ public class MainActivity extends ActionBarActivity {
         addUpTo = (TextView) findViewById(R.id.amount);
         deck = new Deck();
         mainCard = deck.drawCard();
+        timerNum = 25;
         //end initializing
 
+        countdown();
         setCardImage(mainCardImage, mainCard.getRank(), mainCard.getSuit());
         drawHand();
-        addUpTo.setText("Add up to:" + randomNumberGenerator(mainCard.getRank() + 1, 30, randomGenerator));
+        addUpTo.setText("" + randomNumberGenerator(mainCard.getRank() + 1, 30, randomGenerator));
         cardsLeftInDeck.setText(deck.getCardsRemaining() + "");
 
         //assigning listeners to buttons
@@ -202,8 +205,9 @@ public class MainActivity extends ActionBarActivity {
                     Toast.makeText(getApplicationContext(), "TRUE", Toast.LENGTH_SHORT).show();
                     mainCard = deck.drawCard();
                     setCardImage(mainCardImage, mainCard.getRank(), mainCard.getSuit());
-                    addUpTo.setText("Add up to:" + randomNumberGenerator(mainCard.getRank() + 1, 30, randomGenerator));
+                    addUpTo.setText("" + randomNumberGenerator(mainCard.getRank() + 1, 30, randomGenerator));
                     myTotalCardValue = 0;
+                    cdTimer.cancel();
                     countdown();
                     for (int i = 0; i < 8; i++) {
                         if (hand[i].getSelected()) {
@@ -255,17 +259,19 @@ public class MainActivity extends ActionBarActivity {
     }
 
     /**
-     *Sets up each round for 25 seconds
+     *Sets up each round for timerNum seconds
      */
     private void countdown(){
-        new CountDownTimer(25100, 1000) {
+        cdTimer = new CountDownTimer(timerNum * 1000, 1000) {
+            @Override
             public void onTick(long millisUntilFinished) {
                 timer = (TextView) findViewById(R.id.timer);
                 timer.setText("  " + millisUntilFinished / 1000);
             }
-
+            @Override
             public void onFinish() {
                 AlertDialog timeUP = new AlertDialog.Builder(MainActivity.this).create();
+                timeUP.setCanceledOnTouchOutside(false);
                 timeUP.setTitle("Time's Up!");
                 timeUP.setMessage("No points earned from this round");
                 timeUP.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
@@ -273,15 +279,17 @@ public class MainActivity extends ActionBarActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 mainCard = deck.drawCard();
                                 setCardImage(mainCardImage, mainCard.getRank(), mainCard.getSuit());
-                                addUpTo.setText("Add up to:" + randomNumberGenerator(mainCard.getRank() + 1, 30, randomGenerator));
+                                addUpTo.setText("" + randomNumberGenerator(mainCard.getRank() + 1, 30, randomGenerator));
                                 myTotalCardValue = 0;
                                 for (int i = 0; i < 8; i++) {
                                     if (hand[i].getSelected()) {
                                         hand[i].setSelected(false);
-                                        imageCard[i].setEnabled(false);
+                                        imageCard[i].getBackground().setAlpha(255);
                                     }
                                 }
                                 cardsLeftInDeck.setText(deck.getCardsRemaining()+"");
+                                btnSubmit.setText("Submit: " + myTotalCardValue);
+                                cdTimer.cancel();
                                 countdown();
                                 dialog.dismiss();
                             }
